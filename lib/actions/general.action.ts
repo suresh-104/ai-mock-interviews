@@ -23,19 +23,20 @@ export async function createFeedback(params: CreateFeedbackParams) {
       }),
       schema: feedbackSchema,
       prompt: `
-        You are an AI interviewer analyzing a mock interview. Your task is to evaluate the candidate based on structured categories. Be thorough and detailed in your analysis. Don't be lenient with the candidate. If there are mistakes or areas for improvement, point them out.
-        Transcript:
-        ${formattedTranscript}
-
-        Please score the candidate from 0 to 100 in the following areas. Do not add categories other than the ones provided:
-        - **Communication Skills**: Clarity, articulation, structured responses.
-        - **Technical Knowledge**: Understanding of key concepts for the role.
-        - **Problem-Solving**: Ability to analyze problems and propose solutions.
-        - **Cultural & Role Fit**: Alignment with company values and job role.
-        - **Confidence & Clarity**: Confidence in responses, engagement, and clarity.
+          Vous êtes un conseiller Campus France analysant un entretien de simulation. Votre mission est d'évaluer le candidat selon des catégories structurées. Soyez rigoureux et détaillé dans votre analyse. Évaluez le candidat selon les standards réels de Campus France. Si des lacunes ou des points d'amélioration sont identifiés, signalez-les de manière constructive.
+          
+          Transcription de l'entretien:
+          ${formattedTranscript}
+      
+          Veuillez noter le candidat de 0 à 100 dans les domaines suivants. Ne modifiez pas les catégories fournies:
+          - **Cohérence du projet**: Clarté et pertinence du projet d'études, adéquation avec le parcours antérieur.
+          - **Connaissance du système français**: Compréhension du système éducatif français et des institutions visées.
+          - **Motivation et préparation**: Niveau de recherche effectuée, motivation pour les études en France, préparation linguistique et culturelle.
+          - **Viabilité financière**: Plan de financement réaliste, connaissance des coûts et des ressources disponibles.
+          - **Expression et clarté**: Qualité d'expression, structuration des réponses, capacité à communiquer clairement.
         `,
       system:
-        "You are a professional interviewer analyzing a mock interview. Your task is to evaluate the candidate based on structured categories",
+        "Vous êtes un conseiller Campus France professionnel analysant un entretien de simulation. Votre mission est d'évaluer le candidat selon les critères officiels de Campus France",
     });
 
     const feedback = {
