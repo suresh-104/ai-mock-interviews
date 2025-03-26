@@ -15,6 +15,8 @@ export async function setSessionCookie(idToken: string) {
     expiresIn: SESSION_DURATION * 1000, // milliseconds
   });
 
+  console.log(sessionCookie, "sessionCookie");
+
   // Set cookie in the browser
   cookieStore.set("session", sessionCookie, {
     maxAge: SESSION_DURATION,

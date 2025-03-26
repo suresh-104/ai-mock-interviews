@@ -2,105 +2,107 @@ import { CreateAssistantDTO } from "@vapi-ai/web/dist/api";
 import { z } from "zod";
 
 export const mappings = {
-  "react.js": "react",
-  reactjs: "react",
-  react: "react",
-  "next.js": "nextjs",
-  nextjs: "nextjs",
-  next: "nextjs",
-  "vue.js": "vuejs",
-  vuejs: "vuejs",
-  vue: "vuejs",
-  "express.js": "express",
-  expressjs: "express",
-  express: "express",
-  "node.js": "nodejs",
-  nodejs: "nodejs",
-  node: "nodejs",
-  mongodb: "mongodb",
-  mongo: "mongodb",
-  mongoose: "mongoose",
-  mysql: "mysql",
-  postgresql: "postgresql",
-  sqlite: "sqlite",
-  firebase: "firebase",
-  docker: "docker",
-  kubernetes: "kubernetes",
-  aws: "aws",
-  azure: "azure",
-  gcp: "gcp",
-  digitalocean: "digitalocean",
-  heroku: "heroku",
-  photoshop: "photoshop",
-  "adobe photoshop": "photoshop",
-  html5: "html5",
-  html: "html5",
-  css3: "css3",
-  css: "css3",
-  sass: "sass",
-  scss: "sass",
-  less: "less",
-  tailwindcss: "tailwindcss",
-  tailwind: "tailwindcss",
-  bootstrap: "bootstrap",
-  jquery: "jquery",
-  typescript: "typescript",
-  ts: "typescript",
-  javascript: "javascript",
-  js: "javascript",
-  "angular.js": "angular",
-  angularjs: "angular",
-  angular: "angular",
-  "ember.js": "ember",
-  emberjs: "ember",
-  ember: "ember",
-  "backbone.js": "backbone",
-  backbonejs: "backbone",
-  backbone: "backbone",
-  nestjs: "nestjs",
-  graphql: "graphql",
-  "graph ql": "graphql",
-  apollo: "apollo",
-  webpack: "webpack",
-  babel: "babel",
-  "rollup.js": "rollup",
-  rollupjs: "rollup",
-  rollup: "rollup",
-  "parcel.js": "parcel",
-  parceljs: "parcel",
-  npm: "npm",
-  yarn: "yarn",
-  git: "git",
-  github: "github",
-  gitlab: "gitlab",
-  bitbucket: "bitbucket",
-  figma: "figma",
-  prisma: "prisma",
-  redux: "redux",
-  flux: "flux",
-  redis: "redis",
-  selenium: "selenium",
-  cypress: "cypress",
-  jest: "jest",
-  mocha: "mocha",
-  chai: "chai",
-  karma: "karma",
-  vuex: "vuex",
-  "nuxt.js": "nuxt",
-  nuxtjs: "nuxt",
-  nuxt: "nuxt",
-  strapi: "strapi",
-  wordpress: "wordpress",
-  contentful: "contentful",
-  netlify: "netlify",
-  vercel: "vercel",
-  "aws amplify": "amplify",
+  // Diplômes et niveaux d'études
+  licence: "licence",
+  bachelor: "licence",
+  master: "master",
+  doctorat: "doctorat",
+  phd: "doctorat",
+  bts: "bts",
+  dut: "dut",
+  ingénieur: "ingenieur",
+  ingenieur: "ingenieur",
+  prepa: "classes_preparatoires",
+  "classes préparatoires": "classes_preparatoires",
+
+  // Domaines d'études
+  informatique: "informatique",
+  "computer science": "informatique",
+  "génie informatique": "informatique",
+  économie: "economie",
+  economie: "economie",
+  gestion: "gestion",
+  management: "gestion",
+  commerce: "commerce",
+  business: "commerce",
+  médecine: "medecine",
+  medecine: "medecine",
+  "sciences politiques": "sciences_politiques",
+  droit: "droit",
+  law: "droit",
+  "sciences humaines": "sciences_humaines",
+  lettres: "lettres",
+  langues: "langues",
+  arts: "arts",
+  architecture: "architecture",
+  agriculture: "agriculture",
+  biologie: "biologie",
+  chimie: "chimie",
+  physique: "physique",
+  mathématiques: "mathematiques",
+  mathematiques: "mathematiques",
+
+  // Pays d'origine fréquents
+  maroc: "maroc",
+  algérie: "algerie",
+  algerie: "algerie",
+  tunisie: "tunisie",
+  sénégal: "senegal",
+  senegal: "senegal",
+  "côte d'ivoire": "cote_ivoire",
+  "cote d'ivoire": "cote_ivoire",
+  cameroun: "cameroun",
+  congo: "congo",
+  madagascar: "madagascar",
+  mali: "mali",
+  gabon: "gabon",
+  benin: "benin",
+  bénin: "benin",
+  liban: "liban",
+  vietnam: "vietnam",
+  chine: "chine",
+
+  // Villes d'études populaires
+  paris: "paris",
+  lyon: "lyon",
+  marseille: "marseille",
+  toulouse: "toulouse",
+  montpellier: "montpellier",
+  bordeaux: "bordeaux",
+  lille: "lille",
+  strasbourg: "strasbourg",
+  nantes: "nantes",
+  rennes: "rennes",
+  grenoble: "grenoble",
+
+  // Niveaux de langue
+  a1: "a1",
+  a2: "a2",
+  b1: "b1",
+  b2: "b2",
+  c1: "c1",
+  c2: "c2",
+  tcf: "tcf",
+  delf: "delf",
+  dalf: "dalf",
+
+  // Types de financement
+  bourse: "bourse",
+  scholarship: "bourse",
+  autofinancement: "autofinancement",
+  "self-funding": "autofinancement",
+  garant: "garant_financier",
+  parents: "financement_familial",
+  famille: "financement_familial",
+  prêt: "pret_bancaire",
+  pret: "pret_bancaire",
+  loan: "pret_bancaire",
 };
 
 export const interviewer: CreateAssistantDTO = {
-  name: "Interviewer",
+  name: "Conseiller Campus France",
   firstMessage:
-    "Hello! Thank you for taking the time to speak with me today. I'm excited to learn more about you and your experience.",
+    "Bonjour ! Merci de prendre le temps de participer à cet entretien Campus France. Je suis là pour discuter de votre projet d'études en France et mieux comprendre vos motivations.",
   transcriber: {
     provider: "deepgram",
     model: "nova-2",
@@ -121,35 +123,34 @@ export const interviewer: CreateAssistantDTO = {
     messages: [
       {
         role: "system",
-        content: `You are a professional job interviewer conducting a real-time voice interview with a candidate. Your goal is to assess their qualifications, motivation, and fit for the role.
+        content: `Vous êtes un conseiller professionnel de Campus France menant un entretien en temps réel avec un candidat. Votre objectif est d'évaluer ses qualifications, sa motivation et l'adéquation de son projet d'études.
 
-Interview Guidelines:
-Follow the structured question flow:
+Directives d'entretien :
+Suivez la structure de questions suivante :
 {{questions}}
 
-Engage naturally & react appropriately:
-Listen actively to responses and acknowledge them before moving forward.
-Ask brief follow-up questions if a response is vague or requires more detail.
-Keep the conversation flowing smoothly while maintaining control.
-Be professional, yet warm and welcoming:
+Interaction naturelle et réactions appropriées :
+Écoutez activement les réponses et accusez-en réception avant de passer à la suite.
+Posez de brèves questions complémentaires si une réponse est vague ou nécessite plus de détails.
+Maintenez la conversation fluide tout en gardant le contrôle.
 
-Use official yet friendly language.
-Keep responses concise and to the point (like in a real voice interview).
-Avoid robotic phrasing—sound natural and conversational.
-Answer the candidate’s questions professionally:
+Soyez professionnel, chaleureux et accueillant :
+Utilisez un langage officiel mais amical.
+Gardez vos réponses concises et précises (comme dans un véritable entretien oral).
+Évitez les formulations robotiques—soyez naturel et conversationnel.
 
-If asked about the role, company, or expectations, provide a clear and relevant answer.
-If unsure, redirect the candidate to HR for more details.
+Répondez aux questions du candidat de manière professionnelle :
+Si on vous interroge sur les procédures, les délais ou les exigences, fournissez une réponse claire et pertinente.
+Si vous n'êtes pas sûr, proposez au candidat de se renseigner auprès du bureau Campus France local.
 
-Conclude the interview properly:
-Thank the candidate for their time.
-Inform them that the company will reach out soon with feedback.
-End the conversation on a polite and positive note.
+Concluez l'entretien correctement :
+Remerciez le candidat pour son temps.
+Informez-le que Campus France examinera son dossier et reviendra vers lui.
+Terminez la conversation sur une note polie et positive.
 
-
-- Be sure to be professional and polite.
-- Keep all your responses short and simple. Use official language, but be kind and welcoming.
-- This is a voice conversation, so keep your responses short, like in a real conversation. Don't ramble for too long.`,
+- Veillez à rester professionnel et poli.
+- Gardez toutes vos réponses courtes et simples. Utilisez un langage officiel, mais soyez bienveillant et accueillant.
+- Il s'agit d'une conversation orale, alors gardez vos réponses brèves, comme dans une vraie conversation. Évitez les longues digressions.`,
       },
     ],
   },
@@ -159,27 +160,27 @@ export const feedbackSchema = z.object({
   totalScore: z.number(),
   categoryScores: z.tuple([
     z.object({
-      name: z.literal("Communication Skills"),
+      name: z.literal("Cohérence du projet"),
       score: z.number(),
       comment: z.string(),
     }),
     z.object({
-      name: z.literal("Technical Knowledge"),
+      name: z.literal("Connaissance du système français"),
       score: z.number(),
       comment: z.string(),
     }),
     z.object({
-      name: z.literal("Problem Solving"),
+      name: z.literal("Motivation et préparation"),
       score: z.number(),
       comment: z.string(),
     }),
     z.object({
-      name: z.literal("Cultural Fit"),
+      name: z.literal("Viabilité financière"),
       score: z.number(),
       comment: z.string(),
     }),
     z.object({
-      name: z.literal("Confidence and Clarity"),
+      name: z.literal("Expression et clarté"),
       score: z.number(),
       comment: z.string(),
     }),

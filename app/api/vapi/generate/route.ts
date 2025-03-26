@@ -5,31 +5,32 @@ import { db } from "@/firebase/admin";
 import { getRandomInterviewCover } from "@/lib/utils";
 
 export async function POST(request: Request) {
-  const { type, role, level, techstack, amount, userid } = await request.json();
+  const { type, diplome, level, domaine, amount, userid } =
+    await request.json();
 
   try {
     const { text: questions } = await generateText({
       model: google("gemini-2.0-flash-001"),
-      prompt: `Prepare questions for a job interview.
-        The job role is ${role}.
-        The job experience level is ${level}.
-        The tech stack used in the job is: ${techstack}.
-        The focus between behavioural and technical questions should lean towards: ${type}.
-        The amount of questions required is: ${amount}.
-        Please return only the questions, without any additional text.
-        The questions are going to be read by a voice assistant so do not use "/" or "*" or any other special characters which might break the voice assistant.
-        Return the questions formatted like this:
+      prompt: `Préparez des questions pour un entretien Campus France.
+        Le diplôme visé est ${diplome}.
+        Le niveau d'études visé est ${level}.
+        Le domaine d'études est: ${domaine}.
+        L'orientation entre questions de motivation et questions techniques devrait pencher vers: ${type}.
+        Le nombre de questions requises est: ${amount}.
+        Veuillez retourner uniquement les questions, sans aucun texte supplémentaire.
+        Les questions seront lues par un assistant vocal, donc n'utilisez pas "/", "*" ou tout autre caractère spécial qui pourrait perturber l'assistant vocal.
+        Retournez les questions formatées comme ceci:
         ["Question 1", "Question 2", "Question 3"]
         
-        Thank you! <3
+        Merci! <3
     `,
     });
 
     const interview = {
-      role: role,
+      diplome: diplome,
       type: type,
       level: level,
-      techstack: techstack.split(","),
+      domaine: domaine.split(","),
       questions: JSON.parse(questions),
       userId: userid,
       finalized: true,
@@ -47,5 +48,5 @@ export async function POST(request: Request) {
 }
 
 export async function GET() {
-  return Response.json({ success: true, data: "Thank you!" }, { status: 200 });
+  return Response.json({ success: true, data: "Merci!" }, { status: 200 });
 }
