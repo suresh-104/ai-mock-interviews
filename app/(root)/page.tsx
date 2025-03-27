@@ -21,8 +21,6 @@ async function Home() {
   const hasPastInterviews = userInterviews && userInterviews?.length > 0;
   const hasUpcomingInterviews = allInterview && allInterview?.length > 0;
 
-  console.log(allInterview, "allInterview");
-
   return (
     <>
       <section className="card-cta">
