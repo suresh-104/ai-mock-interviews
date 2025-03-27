@@ -15,7 +15,7 @@ export async function POST(request: Request) {
   } = await request.json();
 
   try {
-    const { text: questions } = await generateText({
+    const { text: questionsRaw } = await generateText({
       model: google("gemini-2.0-flash-001"),
       prompt: `Génère une série de questions stratégiques pour un entretien Campus France, parfaitement adaptées au profil académique spécifique de l'étudiant.
     
@@ -63,14 +63,53 @@ export async function POST(request: Request) {
       ["Question 1", "Question 2", "Question 3", ...]
       
       Note: Les questions doivent simuler un véritable entretien Campus France et couvrir l'ensemble des aspects évalués (motivation, financement, connaissances, cohérence du projet). Sois particulièrement attentif aux spécificités du domaine d'études et aux exigences particulières des établissements français ciblés.
+      
+      IMPORTANT: Retourne seulement un tableau JSON valide sans aucun formatage comme des backticks ou des identifiants de langage.
       `,
     });
+
+    // Clean up the response to ensure it's valid JSON
+    let questionsText = questionsRaw.trim();
+
+    // Remove markdown code blocks if present
+    if (
+      questionsText.startsWith("```json") ||
+      questionsText.startsWith("```")
+    ) {
+      questionsText = questionsText.replace(
+        /^```json\n|\n```$|^```\n|\n```$/g,
+        "",
+      );
+    }
+
+    // Parse the JSON array
+    let questions;
+    try {
+      questions = JSON.parse(questionsText);
+    } catch (parseError) {
+      console.error("JSON parsing error:", parseError);
+      console.log("Raw response:", questionsRaw);
+
+      // Fallback: Try to extract the array portion if JSON parse fails
+      const arrayMatch = questionsText.match(/\[\s*".*"\s*(?:,\s*".*"\s*)*\]/s);
+      if (arrayMatch) {
+        try {
+          questions = JSON.parse(arrayMatch[0]);
+        } catch (fallbackError) {
+          throw new Error(
+            "Failed to parse questions array: " + fallbackError.message,
+          );
+        }
+      } else {
+        throw new Error("Unable to extract valid JSON array from response");
+      }
+    }
 
     const interview = {
       diplome: diplome,
       type: type,
       level: level,
-      questions: JSON.parse(questions),
+      questions: questions,
       userId: userId,
       finalized: true,
       createdAt: new Date().toISOString(),
@@ -81,7 +120,13 @@ export async function POST(request: Request) {
     return Response.json({ success: true }, { status: 200 });
   } catch (error) {
     console.error("Error:", error);
-    return Response.json({ success: false, error: error }, { status: 500 });
+    return Response.json(
+      {
+        success: false,
+        error: error.message || String(error),
+      },
+      { status: 500 },
+    );
   }
 }
 
