@@ -34,7 +34,7 @@ const InterviewCard = async ({
     }[normalizedType] || "bg-light-600";
 
   const formattedDate = dayjs(
-    feedback?.createdAt || createdAt || Date.now()
+    feedback?.createdAt || createdAt || Date.now(),
   ).format("MMM D, YYYY");
 
   return (
@@ -45,7 +45,7 @@ const InterviewCard = async ({
           <div
             className={cn(
               "absolute top-0 right-0 w-fit px-4 py-2 rounded-bl-lg",
-              badgeColor
+              badgeColor,
             )}
           >
             <p className="badge-text ">{normalizedType}</p>
