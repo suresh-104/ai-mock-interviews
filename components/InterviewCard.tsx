@@ -3,7 +3,6 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { Button } from "./ui/button";
-import DisplayTechIcons from "./DisplayTechIcons";
 
 import { cn, getRandomInterviewCover } from "@/lib/utils";
 import { getFeedbackByInterviewId } from "@/lib/actions/general.action";
@@ -51,15 +50,6 @@ const InterviewCard = async ({
             <p className="badge-text ">{normalizedType}</p>
           </div>
 
-          {/* Cover Image */}
-          <Image
-            src={getRandomInterviewCover()}
-            alt="cover-image"
-            width={90}
-            height={90}
-            className="rounded-full object-fit size-[90px]"
-          />
-
           {/* Interview Role */}
           <h3 className="mt-5 capitalize">{role} Interview</h3>
 
@@ -83,14 +73,11 @@ const InterviewCard = async ({
 
           {/* Feedback or Placeholder Text */}
           <p className="line-clamp-2 mt-5">
-            {feedback?.finalAssessment ||
-              "You haven't taken this interview yet. Take it now to improve your skills."}
+            {feedback?.finalAssessment || "...Oups !"}
           </p>
         </div>
 
         <div className="flex flex-row justify-between">
-          <DisplayTechIcons techStack={techstack} />
-
           <Button className="btn-primary">
             <Link
               href={
