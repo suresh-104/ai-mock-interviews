@@ -167,7 +167,7 @@ const Agent = ({
         <div className="card-border">
           <div className="card-content">
             <Image
-              src="/user-avatar.png"
+              src={`https://avatar.iran.liara.run/username?username=${userName}`}
               alt="profile-image"
               width={539}
               height={539}
@@ -206,13 +206,13 @@ const Agent = ({
 
             <span className="relative">
               {callStatus === "INACTIVE" || callStatus === "FINISHED"
-                ? "Call"
+                ? "Commencer l'entretien"
                 : ". . ."}
             </span>
           </button>
         ) : (
           <button className="btn-disconnect" onClick={() => handleDisconnect()}>
-            End
+            Terminer l&rsquo;entretien
           </button>
         )}
       </div>

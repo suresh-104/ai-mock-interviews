@@ -64,7 +64,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
           return;
         }
 
-        toast.success("Account created successfully. Please sign in.");
+        toast.success("Compte créé avec succès. Veuillez vous connecter.");
         router.push("/sign-in");
       } else {
         const { email, password } = data;
@@ -77,7 +77,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
 
         const idToken = await userCredential.user.getIdToken();
         if (!idToken) {
-          toast.error("Sign in Failed. Please try again.");
+          toast.error("Échec de la connexion. Veuillez réessayer.");
           return;
         }
 
@@ -86,12 +86,12 @@ const AuthForm = ({ type }: { type: FormType }) => {
           idToken,
         });
 
-        toast.success("Signed in successfully.");
+        toast.success("Connecté avec succès.");
         router.push("/");
       }
     } catch (error) {
       console.log(error);
-      toast.error(`There was an error: ${error}`);
+      toast.error(`Une erreur s'est produite: ${error}`);
     }
   };
 
@@ -102,10 +102,10 @@ const AuthForm = ({ type }: { type: FormType }) => {
       <div className="flex flex-col gap-6 card py-14 px-10">
         <div className="flex flex-row gap-2 justify-center">
           <Image src="/logo.svg" alt="logo" height={32} width={38} />
-          <h2 className="text-primary-100">PrepWise</h2>
+          <h2 className="text-primary-100">Campus France IA</h2>
         </div>
 
-        <h3>Practice job interviews with AI</h3>
+        <h3 className="text-center">Assistant IA Campus France</h3>
 
         <Form {...form}>
           <form
@@ -116,8 +116,8 @@ const AuthForm = ({ type }: { type: FormType }) => {
               <FormField
                 control={form.control}
                 name="name"
-                label="Name"
-                placeholder="Your Name"
+                label="Nom complet"
+                placeholder="Votre nom et prénom"
                 type="text"
               />
             )}
@@ -126,31 +126,31 @@ const AuthForm = ({ type }: { type: FormType }) => {
               control={form.control}
               name="email"
               label="Email"
-              placeholder="Your email address"
+              placeholder="Votre adresse email"
               type="email"
             />
 
             <FormField
               control={form.control}
               name="password"
-              label="Password"
-              placeholder="Enter your password"
+              label="Mot de passe"
+              placeholder="Entrez votre mot de passe"
               type="password"
             />
 
-            <Button className="btn" type="submit">
-              {isSignIn ? "Sign In" : "Create an Account"}
+            <Button className="w-full" type="submit">
+              {isSignIn ? "Se connecter" : "Créer un compte étudiant"}
             </Button>
           </form>
         </Form>
 
         <p className="text-center">
-          {isSignIn ? "No account yet?" : "Have an account already?"}
+          {isSignIn ? "Nouvel étudiant ?" : "Déjà inscrit ?"}
           <Link
             href={!isSignIn ? "/sign-in" : "/sign-up"}
             className="font-bold text-user-primary ml-1"
           >
-            {!isSignIn ? "Sign In" : "Sign Up"}
+            {!isSignIn ? "Se connecter" : "S'inscrire"}
           </Link>
         </p>
       </div>
