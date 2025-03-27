@@ -14,14 +14,14 @@ async function Home() {
   const user = await getCurrentUser();
 
   const [userInterviews, allInterview] = await Promise.all([
-    getInterviewsByUserId(user?.id!),
-    getLatestInterviews({ userId: user?.id! }),
+    getInterviewsByUserId(user?.id || ""),
+    getLatestInterviews({ userId: user?.id || "" }),
   ]);
 
-  console.log(userInterviews, "userInterviews");
+  const hasPastInterviews = userInterviews && userInterviews?.length > 0;
+  const hasUpcomingInterviews = allInterview && allInterview?.length > 0;
 
-  const hasPastInterviews = userInterviews?.length! > 0;
-  const hasUpcomingInterviews = allInterview?.length! > 0;
+  console.log(allInterview, "allInterview");
 
   return (
     <>
