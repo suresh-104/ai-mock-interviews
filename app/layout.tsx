@@ -11,22 +11,13 @@ const urbanist = Urbanist({
   fallback: ["sans-serif"],
 });
 
-export const metadata = {
-  title: "Campus Pro | Préparez-vous aux entretiens d'embauche avec l'IA",
+export const metadata: Metadata = {
+  title: "Campus Pro | Préparation Entretien Campus France",
   description:
-    "Plateforme d'entraînement aux entretiens d'embauche propulsée par l'IA. Simulez des entretiens réalistes, recevez des feedbacks personnalisés et améliorez vos compétences en communication professionnelle.",
-  keywords: [
-    "entretien d'embauche",
-    "préparation entretien",
-    "simulation IA",
-    "carrière",
-    "développement professionnel",
-  ],
-  authors: [{ name: "Campus Pro" }],
+    "Entraînez-vous aux entretiens Campus France et recevez des feedbacks personnalisés",
   openGraph: {
-    title: "Campus Pro | Maîtrisez l'art de l'entretien d'embauche",
-    description:
-      "Préparez-vous efficacement aux entretiens avec notre plateforme d'IA qui simule des scénarios réels d'entretien",
+    title: "Campus Pro | Préparation Entretien Campus France",
+    description: "Simulez votre entretien Campus France avec l'IA",
   },
 };
 
