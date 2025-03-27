@@ -18,6 +18,8 @@ async function Home() {
     getLatestInterviews({ userId: user?.id! }),
   ]);
 
+  console.log(userInterviews, "userInterviews");
+
   const hasPastInterviews = userInterviews?.length! > 0;
   const hasUpcomingInterviews = allInterview?.length! > 0;
 
@@ -26,12 +28,12 @@ async function Home() {
       <section className="card-cta">
         <div className="flex flex-col gap-6 max-w-lg">
           <h2>
-            Préparez-vous aux entretiens avec l'entraînement et les retours
-            alimentés par l'IA
+            Préparez-vous aux entretiens avec l&rsquo;entraînement et les
+            retours alimentés par l&rsquo;IA
           </h2>
           <p className="text-lg">
-            Entraînez-vous avec de vraies questions d'entretien et obtenez des
-            retours instantanés
+            Entraînez-vous avec de vraies questions d&rsquo;entretien et obtenez
+            des retours instantanés
           </p>
 
           <Button asChild className="btn-primary max-sm:w-full">

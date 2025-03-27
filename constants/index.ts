@@ -118,8 +118,8 @@ export const interviewer: CreateAssistantDTO = {
     useSpeakerBoost: true,
   },
   model: {
-    provider: "openai",
-    model: "gpt-4",
+    provider: "vapi",
+    model: "interview_prep",
     messages: [
       {
         role: "system",
