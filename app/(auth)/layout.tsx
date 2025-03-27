@@ -26,8 +26,8 @@ const AuthLayout = async ({ children }: { children: ReactNode }) => {
       {/* Main content area */}
       <main className="relative mb-8 z-10 flex-1 flex flex-col md:flex-row items-center justify-center p-6">
         {/* Left side - Content */}
-        <div className="w-full md:w-1/2 max-w-xl px-6 mb-10 md:mb-0">
-          <div className="inline-flex items-center px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/10 text-xs text-gray-300 mb-6">
+        <div className="w-full md:w-1/2 max-w-xl md:px-6 mb-10 md:mb-0">
+          <div className="inline-flex items-center md:px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/10 text-xs text-gray-300 mb-6">
             <span className="h-2 w-2 rounded-full bg-cyan-400 mr-2 animate-pulse"></span>
             Intelligence Artificielle pour vos entretiens
           </div>
