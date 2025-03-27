@@ -100,7 +100,7 @@ export const mappings = {
 };
 
 export const interviewer: CreateAssistantDTO = {
-  name: "Conseiller Campus France",
+  name: "Dave Glad",
   firstMessage:
     "Bonjour ! Merci de prendre le temps de participer à cet entretien Campus France. Je suis là pour discuter de votre projet d'études en France et mieux comprendre vos motivations.",
   transcriber: {
