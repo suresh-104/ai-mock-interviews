@@ -11,34 +11,19 @@ export async function POST(request: Request) {
   try {
     const { text: questions } = await generateText({
       model: google("gemini-2.0-flash-001"),
-      prompt: `🌍 **Expert Mondial en Préparation aux Entretiens Campus France**  
-    
-      Vous êtes un **expert reconnu à l’échelle internationale** dans la préparation aux entretiens Campus France.  
-      Votre rôle est de concevoir un **questionnaire stratégique**, parfaitement adapté au profil du candidat, afin de l’aider à maximiser ses chances de succès.  
-    
-      **📌 Informations sur le candidat :**  
-      - 🎓 **Diplôme visé** : ${diplome}  
-      - 📈 **Niveau d'études visé** : ${level}  
-      - 🏛️ **Domaine d’études** : ${domaine}  
-      - 🎯 **Type de questions privilégié** : ${type} (motivation/technique)  
-      - 🔢 **Nombre de questions requises** : ${amount}  
-    
-      **🎯 Objectif :**  
-      Concevoir des questions précises et engageantes qui permettent d’évaluer :  
-      ✅ La **cohérence du projet d’études** avec son parcours.  
-      ✅ Sa **compréhension du système éducatif français** et de la formation visée.  
-      ✅ Son **motivation réelle** et sa capacité à défendre son projet.  
-      ✅ La **viabilité de son plan de financement**.  
-      ✅ Son **aisance à communiquer et structurer ses idées**.  
-    
-      **⚠️ Consignes essentielles :**  
-      - **Générer uniquement les questions**, sans texte supplémentaire.  
-      - **Personnaliser les questions** pour refléter le projet du candidat.  
-      - **Ne pas utiliser de caractères spéciaux** comme "/", "*", qui pourraient perturber un assistant vocal.  
-      - **Retourner les questions dans ce format précis** :  
-        ["Question 1", "Question 2", "Question 3", ...]  
-    
-      🏆 **Créez un questionnaire pertinent et stratégique qui permettra au candidat d’exceller lors de son entretien.** 🚀`,
+      prompt: `Préparez des questions pour un entretien Campus France.
+        Le diplôme visé est ${diplome}.
+        Le niveau d'études visé est ${level}.
+        Le domaine d'études est: ${domaine}.
+        L'orientation entre questions de motivation et questions techniques devrait pencher vers: ${type}.
+        Le nombre de questions requises est: ${amount}.
+        Veuillez retourner uniquement les questions, sans aucun texte supplémentaire.
+        Les questions seront lues par un assistant vocal, donc n'utilisez pas "/", "*" ou tout autre caractère spécial qui pourrait perturber l'assistant vocal.
+        Retournez les questions formatées comme ceci:
+        ["Question 1", "Question 2", "Question 3"]
+        
+        Merci! <3
+    `,
     });
 
     const interview = {
