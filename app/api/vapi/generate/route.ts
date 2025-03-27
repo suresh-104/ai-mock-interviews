@@ -3,32 +3,43 @@ import { google } from "@ai-sdk/google";
 import { db } from "@/firebase/admin";
 
 export async function POST(request: Request) {
-  const { type, diplome, level, domaine, amount, userId } =
-    await request.json();
+  const { type, diplome, level, amount, userId } = await request.json();
 
   try {
     const { text: questions } = await generateText({
       model: google("gemini-2.0-flash-001"),
-      prompt: `Préparez des questions pour un entretien Campus France.
-        Le diplôme visé est ${diplome}.
-        Le niveau d'études visé est ${level}.
-        Le domaine d'études est: ${domaine}.
-        L'orientation entre questions de motivation et questions techniques devrait pencher vers: ${type}.
-        Le nombre de questions requises est: ${amount}.
-        Veuillez retourner uniquement les questions, sans aucun texte supplémentaire.
-        Les questions seront lues par un assistant vocal, donc n'utilisez pas "/", "*" ou tout autre caractère spécial qui pourrait perturber l'assistant vocal.
-        Retournez les questions formatées comme ceci:
-        ["Question 1", "Question 2", "Question 3"]
-        
-        Merci! <3
-    `,
+      prompt: `Génère une série de questions stratégiques pour un entretien Campus France, adaptées au profil académique spécifique de l'étudiant.
+    
+      PROFIL DE L'ÉTUDIANT:
+      - Diplôme visé en France: ${diplome}
+      - Niveau d'études visé: ${level}
+      - Type de questions prioritaires: ${type} (motivation/projet professionnel ou connaissances techniques)
+      - Nombre de questions à générer: ${amount}
+      
+      OBJECTIFS DE PRÉPARATION:
+      - Évaluer la cohérence du projet d'études avec le parcours antérieur
+      - Vérifier la connaissance du système éducatif français et de l'établissement choisi
+      - Tester la solidité du projet professionnel post-diplomation
+      - Mesurer le niveau de préparation linguistique et d'intégration culturelle
+      
+      CONTRAINTES TECHNIQUES:
+      1. Format exclusif questions, sans commentaires ni explications
+      2. Éviter tout caractère spécial perturbant la synthèse vocale (/, *, #, etc.)
+      3. Questions formulées clairement, sans jargon inaccessible
+      4. Équilibre entre questions ouvertes et questions précises
+      5. Adaptation au niveau académique indiqué (licence/master/doctorat)
+      
+      FORMAT DE SORTIE REQUIS:
+      ["Question 1", "Question 2", "Question 3"]
+      
+      Note: Les questions doivent simuler un véritable entretien Campus France et couvrir l'ensemble des aspects évalués (motivation, financement, connaissances, cohérence du projet).
+      `,
     });
 
     const interview = {
       diplome: diplome,
       type: type,
       level: level,
-      domaine: domaine,
       questions: JSON.parse(questions),
       userId: userId,
       finalized: true,
