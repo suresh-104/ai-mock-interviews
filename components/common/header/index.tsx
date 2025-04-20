@@ -73,7 +73,7 @@ const Header = () => {
             <ThemeToggle />
 
             <Link
-              href="/sign-up"
+              href="/sign-in"
               passHref
               className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-700 dark:hover:text-white transition-colors relative group"
             >

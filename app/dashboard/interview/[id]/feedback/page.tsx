@@ -239,7 +239,7 @@ const Feedback = async ({ params }: RouteParams) => {
         <div className="pt-4 flex flex-col sm:flex-row gap-4">
           <Button className="flex-1" variant={"outline"}>
             <Link
-              href="/"
+              href="/dashboard"
               className="flex w-full justify-center items-center gap-2"
             >
               <svg
@@ -262,7 +262,7 @@ const Feedback = async ({ params }: RouteParams) => {
 
           <Button className="flex-1">
             <Link
-              href={`/interview/${id}`}
+              href={`/dashboard/interview/${id}`}
               className="flex w-full justify-center items-center gap-2"
             >
               <svg

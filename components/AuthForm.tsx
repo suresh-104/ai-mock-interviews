@@ -86,7 +86,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
         });
 
         toast.success("Connecté avec succès.");
-        router.push("/");
+        router.push("/dashboard");
       }
     } catch (error) {
       console.log(error);
@@ -97,7 +97,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
   const isSignIn = type === "sign-in";
 
   return (
-    <div className="card-border lg:min-w-[566px]">
+    <div className=" lg:min-w-[566px]">
       <div className="flex flex-col gap-6 card py-14 px-10">
         <div className="flex justify-center">
           <Logo />

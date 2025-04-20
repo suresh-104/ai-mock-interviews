@@ -649,7 +649,7 @@ system:
 
   <div className="buttons">
     <Button className="btn-secondary flex-1">
-      <Link href="/" className="flex w-full justify-center">
+      <Link href="/dashboard" className="flex w-full justify-center">
         <p className="text-sm font-semibold text-primary-200 text-center">
           Back to dashboard
         </p>
@@ -657,7 +657,10 @@ system:
     </Button>
 
     <Button className="btn-primary flex-1">
-      <Link href={`/interview/${id}`} className="flex w-full justify-center">
+      <Link
+        href={`/dashboard/interview/${id}`}
+        className="flex w-full justify-center"
+      >
         <p className="text-sm font-semibold text-black text-center">
           Retake Interview
         </p>

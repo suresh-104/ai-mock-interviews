@@ -5,17 +5,17 @@ import { redirect } from "next/navigation";
 
 import { isAuthenticated } from "@/lib/actions/auth.action";
 import SignOutButton from "@/components/SignOutButton";
+import Logo from "@/components/common/logo";
 
 const Layout = async ({ children }: { children: ReactNode }) => {
   const isUserAuthenticated = await isAuthenticated();
   if (!isUserAuthenticated) redirect("/sign-in");
 
   return (
-    <div className="root-layout">
+    <div className="px-24 py-6">
       <nav className="w-full flex justify-between items-center">
-        <Link href="/" className="flex items-center gap-2">
-          {/* <Image src="/logo.svg" alt="CampusPro Logo" width={38} height={32} /> */}
-          <h2 className="text-primary-100">CampusPro</h2>
+        <Link href="/dashboard" className="flex items-center gap-2">
+          <Logo />
         </Link>
 
         <SignOutButton />
