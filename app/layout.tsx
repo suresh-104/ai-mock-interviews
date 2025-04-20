@@ -1,6 +1,7 @@
 import { Toaster } from "sonner";
 import type { Metadata } from "next";
 import { Urbanist } from "next/font/google";
+import { ThemeProvider } from "next-themes";
 
 import "./globals.css";
 
@@ -27,13 +28,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className="dark">
+    <html lang="fr" suppressHydrationWarning>
       <body
-        className={`${urbanist.className} antialiased pattern`}
+        className={`${urbanist.className} antialiased `}
         cz-shortcut-listen="true"
       >
-        {children}
-        <Toaster />
+        {" "}
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          {children}
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   );

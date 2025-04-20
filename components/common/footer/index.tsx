@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { useState } from "react";
+import Logo from "../logo";
 
 const Footer = () => {
   const [hoverSection, setHoverSection] = useState("");
@@ -39,7 +40,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative pt-24 pb-12 bg-gray-950/90 overflow-hidden">
+    <footer className="relative pt-24 pb-12 bg-white dark:bg-gray-950/90 overflow-hidden">
       {/* Ligne tricolore en haut */}
       <div className="absolute top-0 inset-x-0 h-0.5 z-10">
         <div className="flex h-full">
@@ -61,15 +62,10 @@ const Footer = () => {
           {/* Colonne de présentation */}
           <div className="col-span-1 md:col-span-4 space-y-6">
             <div className="flex items-center">
-              <div className="relative">
-                <span className="text-2xl font-bold text-white">
-                  Prepa<span className="text-blue-400">FR</span>
-                </span>
-                <div className="absolute -bottom-1 left-0 w-1/2 h-0.5 bg-gradient-to-r from-blue-500 via-white to-red-500 rounded-full"></div>
-              </div>
+              <Logo />
             </div>
 
-            <p className="text-gray-400 leading-relaxed">
+            <p className="text-gray-700 dark:text-gray-400 leading-relaxed">
               Votre plateforme d&rsquo;accompagnement intelligent pour réussir
               votre parcours d&rsquo;études en France. Préparez efficacement
               votre entretien Campus France et maximisez vos chances
@@ -81,7 +77,7 @@ const Footer = () => {
                 <span className="absolute -inset-1 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 opacity-50 blur-sm transition-all duration-300 group-hover:opacity-80"></span>
                 <a
                   href="#demo"
-                  className="relative flex items-center justify-center px-5 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg border border-gray-800 group-hover:border-blue-500/30 transition-all duration-300"
+                  className="relative flex items-center justify-center px-5 py-2 text-sm font-medium text-gray-900 dark:text-white bg-gray-100 dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-800 group-hover:border-blue-500/30 transition-all duration-300"
                 >
                   Essayer gratuitement
                   <svg
@@ -112,12 +108,12 @@ const Footer = () => {
                     <a
                       key={social}
                       href={`#${social}`}
-                      className="relative group flex items-center justify-center w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 transition-colors duration-300"
+                      className="relative group flex items-center justify-center w-10 h-10 rounded-full bg-gray-200 hover:bg-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700 transition-colors duration-300"
                     >
                       <span className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 opacity-0 group-hover:opacity-30 transition-opacity duration-300"></span>
                       {social === "facebook" && (
                         <svg
-                          className="h-5 w-5 text-gray-400 group-hover:text-white transition-colors duration-300"
+                          className="h-5 w-5 text-gray-600 group-hover:text-gray-800 dark:text-gray-400 dark:group-hover:text-white transition-colors duration-300"
                           fill="currentColor"
                           viewBox="0 0 24 24"
                         >
@@ -126,7 +122,7 @@ const Footer = () => {
                       )}
                       {social === "twitter" && (
                         <svg
-                          className="h-5 w-5 text-gray-400 group-hover:text-white transition-colors duration-300"
+                          className="h-5 w-5 text-gray-600 group-hover:text-gray-800 dark:text-gray-400 dark:group-hover:text-white transition-colors duration-300"
                           fill="currentColor"
                           viewBox="0 0 24 24"
                         >
@@ -135,7 +131,7 @@ const Footer = () => {
                       )}
                       {social === "instagram" && (
                         <svg
-                          className="h-5 w-5 text-gray-400 group-hover:text-white transition-colors duration-300"
+                          className="h-5 w-5 text-gray-600 group-hover:text-gray-800 dark:text-gray-400 dark:group-hover:text-white transition-colors duration-300"
                           fill="currentColor"
                           viewBox="0 0 24 24"
                         >
@@ -144,7 +140,7 @@ const Footer = () => {
                       )}
                       {social === "linkedin" && (
                         <svg
-                          className="h-5 w-5 text-gray-400 group-hover:text-white transition-colors duration-300"
+                          className="h-5 w-5 text-gray-600 group-hover:text-gray-800 dark:text-gray-400 dark:group-hover:text-white transition-colors duration-300"
                           fill="currentColor"
                           viewBox="0 0 24 24"
                         >
@@ -168,7 +164,7 @@ const Footer = () => {
                   onMouseEnter={() => handleSectionHover(section)}
                   onMouseLeave={() => handleSectionHover("")}
                 >
-                  <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-400">
+                  <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-600 dark:text-gray-400">
                     {section === "etudiants" && "Étudiants"}
                     {section === "formations" && "Formations"}
                     {section === "ressources" && "Ressources"}
@@ -179,7 +175,7 @@ const Footer = () => {
                       <li key={link.name}>
                         <a
                           href={link.href}
-                          className="group relative text-gray-300 hover:text-white transition-colors duration-300"
+                          className="group relative text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-300"
                         >
                           <span className="relative inline-block">
                             {link.name}
@@ -202,11 +198,13 @@ const Footer = () => {
         </div>
 
         {/* Section newsletter */}
-        <div className="mt-16 pt-10 border-t border-gray-800/50">
+        <div className="mt-16 pt-10 border-t border-gray-200 dark:border-gray-800/50">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
             <div className="max-w-md">
-              <h3 className="text-lg font-medium text-white">Restez informé</h3>
-              <p className="mt-2 text-sm text-gray-400">
+              <h3 className="text-lg font-medium text-gray-900 dark:text-white">
+                Restez informé
+              </h3>
+              <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
                 Recevez nos conseils et actualités sur les études en France.
               </p>
             </div>
@@ -215,7 +213,7 @@ const Footer = () => {
                 <div className="relative flex-grow min-w-0">
                   <input
                     type="email"
-                    className="w-full px-4 py-2.5 text-sm text-white bg-gray-900 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                    className="w-full px-4 py-2.5 text-sm text-gray-900 dark:text-white bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                     placeholder="Votre adresse email"
                     required
                   />
@@ -234,30 +232,30 @@ const Footer = () => {
         </div>
 
         {/* Section bas de page */}
-        <div className="mt-12 pt-8 border-t border-gray-800/50">
+        <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800/50">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-2 text-sm text-gray-500">
               <a
                 href="#confidentialite"
-                className="hover:text-gray-300 transition-colors"
+                className="hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
               >
                 Confidentialité
               </a>
               <a
                 href="#conditions"
-                className="hover:text-gray-300 transition-colors"
+                className="hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
               >
                 Conditions d&rsquo;utilisation
               </a>
               <a
                 href="#cookies"
-                className="hover:text-gray-300 transition-colors"
+                className="hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
               >
                 Cookies
               </a>
               <a
                 href="#mentions"
-                className="hover:text-gray-300 transition-colors"
+                className="hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
               >
                 Mentions légales
               </a>
