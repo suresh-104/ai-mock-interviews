@@ -28,7 +28,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" className="dark">
-      <body className={`${urbanist.className} antialiased pattern`}>
+      <body
+        className={`${urbanist.className} antialiased pattern`}
+        cz-shortcut-listen="true"
+      >
         {children}
         <Toaster />
       </body>
