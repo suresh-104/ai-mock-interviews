@@ -39,7 +39,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative pt-24 pb-12 bg-gradient-to-b from-gray-950 to-gray-900 overflow-hidden">
+    <footer className="relative pt-24 pb-12 bg-gray-950/90 overflow-hidden">
       {/* Ligne tricolore en haut */}
       <div className="absolute top-0 inset-x-0 h-0.5 z-10">
         <div className="flex h-full">
@@ -50,7 +50,7 @@ const Footer = () => {
       </div>
 
       {/* Effet de lumière en arrière-plan */}
-      <div className="absolute inset-0 opacity-20 overflow-hidden">
+      <div className="absolute inset-0 opacity-10 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-96 h-96 bg-blue-600 rounded-full blur-3xl"></div>
         <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-indigo-600 rounded-full blur-3xl"></div>
       </div>
@@ -78,7 +78,7 @@ const Footer = () => {
 
             <div className="pt-4">
               <div className="relative group inline-block">
-                <span className="absolute -inset-1 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 opacity-70 blur-sm transition-all duration-300 group-hover:opacity-100"></span>
+                <span className="absolute -inset-1 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 opacity-50 blur-sm transition-all duration-300 group-hover:opacity-80"></span>
                 <a
                   href="#demo"
                   className="relative flex items-center justify-center px-5 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg border border-gray-800 group-hover:border-blue-500/30 transition-all duration-300"
@@ -184,7 +184,7 @@ const Footer = () => {
                           <span className="relative inline-block">
                             {link.name}
                             <span
-                              className={`absolute left-0 -bottom-0.5 w-0 h-0.5 bg-gradient-to-r from-blue-500 via-indigo-500 to-indigo-300 transition-all duration-300 ${
+                              className={`absolute left-0 -bottom-0.5 w-0 h-0.5 bg-gradient-to-r from-blue-500/70 via-indigo-500/70 to-indigo-300/70 transition-all duration-300 ${
                                 hoverSection === section
                                   ? "group-hover:w-full"
                                   : ""
@@ -225,7 +225,7 @@ const Footer = () => {
                   type="submit"
                   className="flex-none relative group bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-sm font-medium py-2.5 px-5 rounded-lg transition-all focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-900"
                 >
-                  <span className="absolute inset-0 rounded-lg bg-gradient-to-r from-blue-400/40 to-indigo-400/40 opacity-0 group-hover:opacity-100 blur-sm transition-opacity"></span>
+                  <span className="absolute inset-0 rounded-lg bg-gradient-to-r from-blue-400/30 to-indigo-400/30 opacity-0 group-hover:opacity-80 blur-sm transition-opacity"></span>
                   <span className="relative">S&rsquo;abonner</span>
                 </button>
               </form>
@@ -278,7 +278,7 @@ const Footer = () => {
         </div>
 
         {/* Élément décoratif - filet lumineux */}
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1/3 h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-30"></div>
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1/3 h-px bg-gradient-to-r from-transparent via-blue-500/60 to-transparent opacity-20"></div>
       </div>
     </footer>
   );

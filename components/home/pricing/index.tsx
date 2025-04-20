@@ -232,7 +232,7 @@ const HomePricing = () => {
           <div className="inline-block px-3 py-1 rounded-full bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 font-medium text-sm mb-4">
             Tarifs
           </div>
-          <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white tracking-tight">
+          <h2 className="text-4xl md:text-4xl font-extrabold text-gray-900 dark:text-white tracking-tight">
             Des formules adaptées à vos besoins
           </h2>
           <p className="mt-6 text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
@@ -257,7 +257,7 @@ const HomePricing = () => {
           </p>
           <a
             href="#contact"
-            className="inline-flex items-center px-6 py-3 text-base font-medium text-white bg-blue-600 border border-transparent rounded-full shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-300"
+            className="inline-flex items-center px-5 py-2 text-base font-medium text-white bg-blue-600 border border-transparent rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-300"
           >
             Demander un devis
             <svg
